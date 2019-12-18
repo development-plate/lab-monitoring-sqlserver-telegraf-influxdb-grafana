@@ -89,8 +89,4 @@ click on load
 select datasource: mssql-ds
 
 
-
-
-
-
-
+![Grafana MS SQLServer Dashboard](https://github.com/development-plate/lab-monitoring-sqlserver-telegraf-influxdb-grafana/blob/master/SQLServer_Monitoring.png)
