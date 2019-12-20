@@ -1,0 +1,8 @@
+USE master;
+GO
+CREATE LOGIN [monitoring] WITH PASSWORD = N'M0nit0ring';
+GO
+GRANT VIEW SERVER STATE TO [monitoring];
+GO
+GRANT VIEW ANY DEFINITION TO [monitoring];
+GO
