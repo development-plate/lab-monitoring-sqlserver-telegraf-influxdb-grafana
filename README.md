@@ -44,7 +44,7 @@ sudo mkdir /etc/telegraf && sudo chgrp -R 0 /etc/telegraf && sudo chmod -R g=u /
 
 ## create telegraf file
 
-sudo touch /etc/telegraf/telegraf.conf
+sudo touch /etc/telegraf/telegraf.conf \\\
 sudo nano /etc/telegraf/telegraf.conf
 
 copy and paste content of telegraf.conf in this blank file
