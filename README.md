@@ -10,9 +10,9 @@ In the first step we start a SQL Server 2019 as Docker container.
 
 sudo mkdir /var/opt/mssql && sudo chgrp -R 0 /var/opt/mssql && sudo chmod -R g=u /var/opt/mssql
 
-sudo docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=M0nit0ring" \\
-   -p 1433:1433 --name monitoring-mssql \\
-   -v /var/opt/mssql:/var/opt/mssql \\
+sudo docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=M0nit0ring" \\\
+   -p 1433:1433 --name monitoring-mssql \\\
+   -v /var/opt/mssql:/var/opt/mssql \\\
    -d mcr.microsoft.com/mssql/server:2019-GA-ubuntu-16.04
 
 ## create telegraf user and give him the rights to read server state
