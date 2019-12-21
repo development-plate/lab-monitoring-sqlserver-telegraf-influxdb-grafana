@@ -63,7 +63,7 @@ curl -G http://localhost:8086/query --data-urlencode "q=SHOW DATABASES"
 
 # SECTION Grafana
 
-sudo docker volume create grafana-storage
+sudo docker volume create grafana-storage \\\
 sudo docker run --network="host" --name=monitoring-grafana -d -p 3000:3000 -v grafana-storage:/var/lib/grafana grafana/grafana
 
 visit http://localhost:3000 in your browser. At first start you must log into with admin + admin and give at next step a new password
