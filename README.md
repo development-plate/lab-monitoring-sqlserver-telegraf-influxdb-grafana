@@ -10,9 +10,9 @@ In the first step we start a SQL Server 2019 as Docker container.
 
 sudo mkdir /var/opt/mssql && sudo chgrp -R 0 /var/opt/mssql && sudo chmod -R g=u /var/opt/mssql
 
-sudo docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=M0nit0ring" \
-   -p 1433:1433 --name monitoring-mssql \
-   -v /var/opt/mssql:/var/opt/mssql \
+sudo docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=M0nit0ring" \\
+   -p 1433:1433 --name monitoring-mssql \\
+   -v /var/opt/mssql:/var/opt/mssql \\
    -d mcr.microsoft.com/mssql/server:2019-GA-ubuntu-16.04
 
 ## create telegraf user and give him the rights to read server state
@@ -23,11 +23,11 @@ In the second step we start InfluxDB as Docker container.
 
 sudo mkdir /var/opt/influxdb && sudo chgrp -R 0 /var/opt/influxdb && sudo chmod -R g=u /var/opt/influxdb
 
-sudo docker run -p 8086:8086 -p 8083:8083 -p 2003:2003 --name monitoring-influxdb \
-      -e INFLUXDB_DB=db0 -e INFLUXDB_ADMIN_ENABLED=true \
-      -e INFLUXDB_ADMIN_USER=admin -e INFLUXDB_ADMIN_PASSWORD=M0nit0ring \
-      -e INFLUXDB_USER=monitoring -e INFLUXDB_USER_PASSWORD=M0nit0ring \
-      -v /var/opt/influxdb:/var/lib/influxdb \
+sudo docker run -p 8086:8086 -p 8083:8083 -p 2003:2003 --name monitoring-influxdb \\
+      -e INFLUXDB_DB=db0 -e INFLUXDB_ADMIN_ENABLED=true \\
+      -e INFLUXDB_ADMIN_USER=admin -e INFLUXDB_ADMIN_PASSWORD=M0nit0ring \\
+      -e INFLUXDB_USER=monitoring -e INFLUXDB_USER_PASSWORD=M0nit0ring \\
+      -v /var/opt/influxdb:/var/lib/influxdb \\
       -d influxdb:1.7.9 
 
 ### create database for test
@@ -51,9 +51,9 @@ copy and paste content of telegraf.conf in this blank file
 
 ## run telegraf as Docker Container
 
-sudo docker run -d --name=monitoring-telegraf \
-      --network="host" \
-      -v /etc/telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:ro \
+sudo docker run -d --name=monitoring-telegraf \\
+      --network="host" \\
+      -v /etc/telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:ro \\
       -d telegraf
 
 ## check if database telegraf exists
